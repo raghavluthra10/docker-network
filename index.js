@@ -2,8 +2,12 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
-app.get("/", (req, res) => {
-   res.json({ message: "Will be fetching database data here" });
+const { database } = require("./database");
+
+app.get("/", async (req, res) => {
+   const users = await database("user");
+
+   res.json({ message: "Will be fetching database data here", data: users });
 });
 
 app.listen(port, () => {
