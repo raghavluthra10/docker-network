@@ -22,6 +22,8 @@ services:
          - database
       env_file:
          - ./.env
+      links:
+         - database
 
 volumes:
    random-db:
